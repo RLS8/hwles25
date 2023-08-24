@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Effects Example</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  .box {
+    width: 200px;
+    height: 200px;
+    background-color: #3498db;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+  }
+  .button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  .button:hover {
+    background-color: #c0392b;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+  }
+</style>
+</head>
+<body>
+<h1>jQuery Effects Example</h1>
+
+<div class="box" id="box1">Box 1</div>
+<div class="box" id="box2">Box 2</div>
+<button class="button" id="animateButton">Animate Box 1</button>
+<button class="button" id="fadeInOutButton">Fade In/Out Box 2</button>
+
+<script>
+  $(document).ready(function() {
+    // Animate Box 1 when the button is clicked
+    $("#animateButton").click(function() {
+      $("#box1").animate({
+        left: '+=100px',
+        opacity: 0.5,
+        fontSize: '+=20px'
+      }, 1000);
+    });
+
+    // Fade In/Out Box 2 when the button is clicked
+    $("#fadeInOutButton").click(function() {
+      $("#box2").fadeOut(500, function() {
+        $(this).fadeIn(500);
+      });
+    });
+
+    // Change text color on mouseover/mouseout for Box 2
+    $("#box2").on({
+      mouseover: function() {
+        $(this).css("color", "#e74c3c");
+      },
+      mouseout: function() {
+        $(this).css("color", "#fff");
+      }
+    });
+  });
+</script>
+</body>
+</html>
